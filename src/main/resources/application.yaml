@@ -8,7 +8,7 @@ spring:
       host: app-command-center-db
       #host: localhost
       port: 27017
-      database: '${MONGO_DB:app_config}'
+      database: app_config
 
   cloud:
     kubernetes:
