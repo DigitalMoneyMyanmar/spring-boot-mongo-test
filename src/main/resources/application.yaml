@@ -1,0 +1,26 @@
+server:
+  port: 8082
+  servlet:
+    contextPath: /spring-boot-mongo
+spring:
+  data:
+    mongodb:
+      host: app-command-center-db
+      #host: localhost
+      port: 27017
+      database: '${MONGO_DB:app_config}'
+
+  cloud:
+    kubernetes:
+      discovery:
+        register: true
+
+      config:
+        enabled: true
+        sources:
+          - namespace: default
+            name: appconfig
+      reload:
+        enabled: true
+        mode: polling
+        period: 1000
