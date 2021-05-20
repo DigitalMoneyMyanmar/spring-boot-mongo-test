@@ -25,10 +25,7 @@ jobs:
             mvn versions:set -DnewVersion=$(cat tempvers.txt)        
           name: "remove snapshot version"
       - 
-        run: mvn -s .circleci/settings.xml -DskipTests clean package
-      - 
-        run: mvn -s .circleci/settings.xml -DskipTests -DaltSnapshotDeploymentRepository=nexus::default::$REPO_URL/maven-snapshots/ -DaltReleaseDeploymentRepository=nexus::default::$REPO_URL/maven-releases/ deploy
-      
+        run: "mvn package"      
       - 
         run: 
           command: |
